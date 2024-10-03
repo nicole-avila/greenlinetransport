@@ -1,0 +1,84 @@
+.footer {
+  background-color: #063304;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  padding: 5rem 0.5rem;
+  font-size: 14px;
+  font-family: "Helvetica", sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/images/footerLogo.svg");
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 1;
+  margin: 1.5rem;
+}
+
+.footer_content {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.footer h2 {
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0.5rem 0;
+}
+
+.footer_shortcut-li {
+  margin: 0.9rem 0;
+  font-size: 1rem;
+  list-style: none;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.footer_shortcut-li:hover {
+  border-bottom: 1px solid #fff;
+}
+
+.footer_media {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer_icon {
+  display: flex;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 500px) {
+  .footer {
+    padding: 0;
+  }
+  .footer::before {
+    background-position: bottom;
+  }
+  .footer_content {
+    width: 60%;
+    margin: auto;
+    gap: 1.5rem;
+    display: flex;
+    flex-direction: column-reverse;
+    min-height: 650px;
+    justify-content: flex-end;
+  }
+}
