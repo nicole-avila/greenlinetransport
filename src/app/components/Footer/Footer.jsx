@@ -59,7 +59,7 @@ function Footer() {
           <h2>sociala medier</h2>
           <div className="footer_icon">
             <img src="/images/instagram.svg" alt="" />
-            <img src="/images/vector-3.svg" alt="" />
+            <img src="/images/linkedIn.svg" alt="" />
           </div>
         </div>
         <div className="footer_svg-bg"></div>

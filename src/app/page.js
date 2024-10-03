@@ -1,4 +1,5 @@
 "use client";
+import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import { useState, useEffect } from "react";
 import client from "@/lib/contentful";
@@ -30,7 +31,7 @@ export default function Home() {
   return (
     <div>
       {console.log("data***", data)}
-      <h1> glt</h1>
+      <Navbar />
       <Footer />
     </div>
   );

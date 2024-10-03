@@ -6,11 +6,12 @@
   padding: 5rem 0.5rem;
   font-size: 14px;
   font-family: "Helvetica", sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 1px;
   text-align: left;
   position: relative;
   overflow: hidden;
+  margin-top: 6rem;
 }
 
 .footer::before {
