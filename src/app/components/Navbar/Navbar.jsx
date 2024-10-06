@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import "./Navbar.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import Link from "next/link";
 
 function Navbar() {
   const [showLinks, setShowLinks] = useState(false);
@@ -14,7 +15,7 @@ function Navbar() {
   return (
     <div className="navbar">
       <div>
-        <a href="#">
+        <Link href="#">
           <Image
             className="navbar_logo"
             src="/images/whiteLogoXs.svg"
@@ -22,7 +23,7 @@ function Navbar() {
             width="185"
             height="80"
           />
-        </a>
+        </Link>
       </div>
       <div className={`navbar_links ${showLinks ? "active" : ""}`}>
         <li className="navbar_link-li">våra tjänster</li>
