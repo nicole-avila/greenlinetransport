@@ -1,32 +1,22 @@
 "use client";
+import Image from "next/image";
 import "./Footer.css";
-import { useState, useEffect } from "react";
-import client from "@/lib/contentful";
+import useContentful from "@/lib/contentful";
 
 function Footer() {
-  const [footerData, setFooterData] = useState(null);
+  const { data, loading, error } = useContentful("footer");
 
-  useEffect(() => {
-    const fetchFooter = async () => {
-      try {
-        const response = await client.getEntries({
-          content_type: "footer",
-        });
-
-        if (response.items.length > 0) {
-          setFooterData(response.items[0]);
-        }
-      } catch (error) {
-        console.error("Error fetching footer data", error);
-      }
-    };
-    fetchFooter();
-  }, []);
-
-  if (!footerData) {
+  if (loading) {
     return <div>Loading...</div>;
   }
-  console.log("footerData***", footerData);
+
+  if (error) {
+    return <div>Error loading data: {error.message}</div>;
+  }
+
+  if (!data) {
+    return <div>No data found</div>;
+  }
 
   return (
     <div className="footer">
@@ -42,24 +32,24 @@ function Footer() {
         <div className="footer_find-us">
           <div>
             <h2>hitta oss</h2>
-            <p>{footerData.fields.streetAddress}</p>
-            <p>{footerData.fields.postalcode}</p>
-            <p>{footerData.fields.city}</p>
+            <p>{data.streetAddress}</p>
+            <p>{data.postalcode}</p>
+            <p>{data.city}</p>
           </div>
           <br />
           <div>
             <h2>kontakt</h2>
-            <p>{footerData.fields.phoneNumber}</p>
-            <p>{footerData.fields.mobileNumber}</p>
-            <p>{footerData.fields.email}</p>
+            <p>{data.phoneNumber}</p>
+            <p>{data.mobileNumber}</p>
+            <p>{data.email}</p>
           </div>
         </div>
 
         <div className="footer_media">
           <h2>sociala medier</h2>
           <div className="footer_icon">
-            <img src="/images/instagram.svg" alt="" />
-            <img src="/images/linkedIn.svg" alt="" />
+            <Image src="/images/instagram.svg" alt="" width="30" height="30" />
+            <Image src="/images/linkedIn.svg" alt="" width="30" height="30" />
           </div>
         </div>
         <div className="footer_svg-bg"></div>
