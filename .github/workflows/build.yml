@@ -1,31 +1,28 @@
-name: Build Next.js Application
+name: Build Site
 
 on:
   push:
     branches:
-      - static-build-tests  # Specify the branch to listen for pushes
+      - static-build-tests 
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Use the latest Ubuntu environment
+    runs-on: ubuntu-latest 
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3  
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3  
         with:
-          node-version: '16'  # Specify the Node.js version
+          node-version: '20'  
 
       - name: Install dependencies
-        run: npm install  # Install project dependencies
+        run: npm install  
 
       - name: Build the Next.js application
-        run: npm run build  # Trigger the build command
-
-      - name: Run tests (optional)
-        run: npm test  # Run tests if you have them
+        run: npm run build 
 
       - name: Deploy to FTP
         env:
