@@ -38,6 +38,9 @@ jobs:
           pwd
           ls -la
 
+      - name: Grant execute permissions to the FTP upload script
+        run: chmod +x ./upload-to-ftp.sh
+
       - name: Upload to FTP
         run: ./upload-to-ftp.sh
         env:
