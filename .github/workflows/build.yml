@@ -1,28 +1,30 @@
 name: Build Site
 
 on:
+  workflow_dispatch:
+  repository_dispatch: 
   push:
     branches:
-      - static-build-tests 
+      - static-build-tests
 
 jobs:
   build:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3  
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3  
+        uses: actions/setup-node@v3
         with:
-          node-version: '20'  
+          node-version: '20'
 
       - name: Install dependencies
-        run: npm install  
+        run: npm install
 
-      - name: Build the Next.js application
-        run: npm run build 
+      - name: Build the site
+        run: npm run build
 
       - name: Deploy to FTP
         env:
@@ -31,6 +33,5 @@ jobs:
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
           FTP_REMOTE_DIR: ${{ secrets.FTP_REMOTE_DIR }}
         run: |
-          # Make sure to have your upload script here
-          chmod +x ./upload-to-ftp.sh  # Ensure the script is executable
-          ./upload-to-ftp.sh  # Execute the FTP upload script
+          chmod +x ./upload-to-ftp.sh 
+          ./upload-to-ftp.sh
