@@ -1,0 +1,39 @@
+name: Build Next.js Application
+
+on:
+  push:
+    branches:
+      - static-build-tests  # Specify the branch to listen for pushes
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu environment
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'  # Specify the Node.js version
+
+      - name: Install dependencies
+        run: npm install  # Install project dependencies
+
+      - name: Build the Next.js application
+        run: npm run build  # Trigger the build command
+
+      - name: Run tests (optional)
+        run: npm test  # Run tests if you have them
+
+      - name: Deploy to FTP
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_REMOTE_DIR: ${{ secrets.FTP_REMOTE_DIR }}
+        run: |
+          # Make sure to have your upload script here
+          chmod +x ./upload-to-ftp.sh  # Ensure the script is executable
+          ./upload-to-ftp.sh  # Execute the FTP upload script
