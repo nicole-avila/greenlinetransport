@@ -2,7 +2,8 @@ name: Build Site
 
 on:
   workflow_dispatch:
-  repository_dispatch: 
+  repository_dispatch:
+    types: [contentful_update]
   push:
     branches:
       - static-build-tests
