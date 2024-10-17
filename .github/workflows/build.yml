@@ -1,5 +1,9 @@
 name: Build Site
 
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
 on:
   workflow_dispatch:
   repository_dispatch:
