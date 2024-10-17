@@ -6,7 +6,7 @@ on:
     types: [contentful_update]
   push:
     branches:
-      - static-build-tests
+      - main
 
 jobs:
   build:
