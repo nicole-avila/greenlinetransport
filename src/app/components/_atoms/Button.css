@@ -11,3 +11,7 @@
   background: #576856;
   cursor: initial;
 }
+
+.button:hover {
+  background: #40603c;
+}
