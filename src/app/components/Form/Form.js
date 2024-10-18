@@ -9,6 +9,7 @@ export default function Form() {
   const [phone, setPhone] = useState("");
   const [company, setCompany] = useState("");
   const [message, setMessage] = useState("");
+  const [honeypot, setHoneypot] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [disableButton, setDisableButton] = useState(false);
@@ -18,6 +19,9 @@ export default function Form() {
     e.stopPropagation();
     setSuccess(false);
     setDisableButton(true);
+    if (honeypot.length > 0) {
+      return;
+    }
 
     fetch("https://formcarry.com/s/7zdZAMX4kJT", {
       method: "POST",
@@ -47,7 +51,7 @@ export default function Form() {
 
   return (
     <form className="contact_form" onSubmit={(e) => onSubmit(e)}>
-      <div className="form_block">
+      <div className="form_block form_name">
         <label htmlFor="name">*Namn</label>
         <input
           type="text"
@@ -58,7 +62,7 @@ export default function Form() {
         />
       </div>
 
-      <div className="form_block">
+      <div className="form_block form_email">
         <label htmlFor="email">*E-post</label>
         <input
           type="email"
@@ -69,7 +73,7 @@ export default function Form() {
         />
       </div>
 
-      <div className="form_block">
+      <div className="form_block form_phone">
         <label htmlFor="telefonnummer">Telefonnummer</label>
         <input
           type="tel"
@@ -80,7 +84,7 @@ export default function Form() {
         />
       </div>
 
-      <div className="form_block">
+      <div className="form_block form_copmpany">
         <label htmlFor="company">Företag</label>
         <input
           type="text"
@@ -91,7 +95,7 @@ export default function Form() {
         />
       </div>
 
-      <div className="form_block">
+      <div className="form_block form_message">
         <label htmlFor="message">Meddelande</label>
         <textarea
           value={message}
@@ -99,6 +103,13 @@ export default function Form() {
           id="message"
           required
         ></textarea>
+      </div>
+      <div style={{ display: "none" }}>
+        <input
+          type="text"
+          name="honeypot"
+          onChange={(e) => setHoneypot(e.target.value)}
+        />
       </div>
 
       <div className="form_block">
