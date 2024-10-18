@@ -1,0 +1,75 @@
+.contact_form {
+  margin: auto;
+  padding: 0.5rem;
+  max-width: 357px;
+}
+
+.form_block input,
+textarea {
+  border: 1px solid #5e5d5c;
+  border-radius: 0;
+  margin-top: 10px;
+  padding-left: 0.3rem;
+}
+.form_block input {
+  height: 40px;
+  margin-bottom: 1rem;
+}
+
+.form_block {
+  display: flex;
+  flex-direction: column;
+}
+
+.form_block textarea {
+  min-height: 10rem;
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .contact_form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 1rem;
+    column-gap: 5rem;
+    max-width: 900px;
+  }
+
+  .form_block input {
+    margin-bottom: 0;
+  }
+
+  .form_block textarea {
+    height: 100%;
+  }
+
+  .form_name {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+
+  .form_email {
+    grid-area: 2 / 1 / 3 / 2;
+  }
+
+  .form_phone {
+    grid-area: 3 / 1 / 4 / 2;
+  }
+
+  .form_company {
+    grid-area: 4 / 1 / 5 / 2;
+  }
+
+  .form_captcha {
+    grid-area: 5 / 1 / 6 / 2;
+  }
+
+  .form_button {
+    grid-area: 6 / 1 / 7 / 2;
+  }
+
+  .form_message {
+    grid-area: 1 / 2 / 6 / 3;
+    height: 100%;
+  }
+}
