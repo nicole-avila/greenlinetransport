@@ -1,0 +1,47 @@
+.hero {
+  position: relative;
+  /* width: 100%; */
+  width: 100%;
+  margin: 0 auto;
+}
+
+.hero__title {
+  position: absolute;
+  top: 5%;
+  left: 2%;
+  color: white;
+  font-size: 5rem;
+  padding: 10px;
+  backdrop-filter: blur(1px);
+  border-radius: 5px;
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+.hero__image {
+  position: relative;
+  width: 100%;
+
+  object-fit: cover;
+}
+
+.hero img {
+  object-fit: cover;
+  max-height: 700px;
+}
+
+@media (max-width: 800px) {
+  .hero__title {
+    font-size: 3.5rem;
+    top: 5%;
+    left: 2%;
+  }
+}
+
+@media (max-width: 500px) {
+  .hero__title {
+    font-size: 2rem;
+    top: 5%;
+    left: 2%;
+  }
+}
