@@ -1,5 +1,7 @@
 "use client";
 import useContentful from "@/lib/contentful";
+import Image from "next/image";
+import Hero from "./components/Hero/Hero";
 
 export default function Home() {
   const { data, loading, error } = useContentful("landingPage");
