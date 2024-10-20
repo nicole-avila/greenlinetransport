@@ -6,7 +6,7 @@
   align-items: center;
   padding: 0.3rem 2rem;
   font-size: 16px;
-  font-family: "Helvetica", sans-serif;
+  font-family: 'Helvetica', sans-serif;
   font-weight: 400;
   letter-spacing: 1px;
   overflow: hidden;
@@ -29,11 +29,19 @@
 }
 
 .navbar_links Link {
-  cursor: pointer;
+  border-bottom: 1px solid #fff;
 }
 
-.navbar_link-li:hover {
+.navbar_link-li:hover,
+.navbar_link-li .active_route {
   border-bottom: 1px solid #fff;
+  padding-bottom: 3px;
+}
+
+/* prevent texts from jumping */
+.navbar_link-li {
+  border-bottom: 1px solid #ffffff00;
+  padding-bottom: 3px;
 }
 
 @media (max-width: 880px) {

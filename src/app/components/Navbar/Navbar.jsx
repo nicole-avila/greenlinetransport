@@ -1,19 +1,20 @@
 'use client';
-
 import Image from 'next/image';
 import './Navbar.css';
 import { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 function Navbar() {
   const [showLinks, setShowLinks] = useState(false);
+  const pathname = usePathname();
 
   const handleShowLinks = () => {
     setShowLinks((prevShowLinks) => !prevShowLinks);
   };
 
   return (
-    <div className='navbar'>
+    <nav className='navbar'>
       <div>
         <Link href='#'>
           <Image
@@ -30,7 +31,12 @@ function Navbar() {
         <li className='navbar_link-li'>fair transport</li>
         <li className='navbar_link-li'>om oss</li>
         <li className='navbar_link-li'>
-          <Link href='/kontakt'>kontakt</Link>
+          <Link
+            href='/kontakt'
+            className={pathname === '/kontakt' ? 'active_route' : ''}
+          >
+            kontakt
+          </Link>
         </li>
       </div>
       <Image
@@ -41,7 +47,7 @@ function Navbar() {
         width='30'
         height='30'
       />
-    </div>
+    </nav>
   );
 }
 
