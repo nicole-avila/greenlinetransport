@@ -10,10 +10,11 @@ function Hero({ heroImage, heroTitle }) {
         <Image
           src={heroImage}
           alt="Hero Image"
-          layout="responsive"
-          width={100}
-          height={100}
+          width={500}
+          height={300}
           priority
+          className="hero__image"
+          // layout="responsive"
         />
       )}
     </div>
