@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import Hero from "../components/Hero/Hero";
-import useContentful from "@/lib/contentful";
 import OurServices from "../components/OurServices/OurServices";
+import useContentful from "@/lib/contentful";
 
 function Services() {
   const { data, loading, error } = useContentful("service");
