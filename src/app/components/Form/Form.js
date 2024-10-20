@@ -1,8 +1,8 @@
-'use clients'
-import { useState } from "react";
-import Button from "../_atoms/Button";
-import { ClipLoader } from "react-spinners";
-import "./Form.css";
+'use client';
+import { useState } from 'react';
+import Button from '../_atoms/Button';
+import { ClipLoader } from 'react-spinners';
+import './Form.css';
 
 export default function Form() {
   const [formData, setFormData] = useState({
@@ -29,12 +29,21 @@ export default function Form() {
 
     const { name, email, phone, company, message } = formData;
 
+    const captchaToken = grecaptcha.getResponse();
+
+    if (!captchaToken) {
+      setStatus('Please complete the reCAPTCHA.');
+      setDisableButton(false);
+      return;
+    }
+
     const requestData = {
       name,
       email,
       phone,
       company,
       message,
+      captchaToken,
     };
 
     try {
@@ -48,7 +57,9 @@ export default function Form() {
 
       const result = await response.json();
       if (result.success) {
-        setStatus('Tack för ditt meddelande. Vi hör av oss till dig så snart vi kan.');
+        setStatus(
+          'Tack för ditt meddelande. Vi hör av oss till dig så snart vi kan.'
+        );
       } else {
         setStatus('Något gick fel, försök igen senare.');
       }
@@ -62,91 +73,95 @@ export default function Form() {
         company: '',
         message: '',
       });
+      grecaptcha.reset();
       setDisableButton(false);
     }
   };
 
   return (
-    <form className="contact_form" onSubmit={onSubmit}>
-      <div className="form_block form_name">
-        <label htmlFor="name">*Namn</label>
+    <form className='contact_form' onSubmit={onSubmit}>
+      <div className='form_block form_name'>
+        <label htmlFor='name'>*Namn</label>
         <input
-          type="text"
-          name="name"
+          type='text'
+          name='name'
           value={formData.name}
           onChange={handleChange}
-          id="name"
+          id='name'
           required
         />
       </div>
 
-      <div className="form_block form_email">
-        <label htmlFor="email">*E-post</label>
+      <div className='form_block form_email'>
+        <label htmlFor='email'>*E-post</label>
         <input
-          type="email"
-          name="email"
+          type='email'
+          name='email'
           value={formData.email}
           onChange={handleChange}
-          id="email"
+          id='email'
           required
         />
       </div>
 
-      <div className="form_block form_phone">
-        <label htmlFor="telefonnummer">Telefonnummer</label>
+      <div className='form_block form_phone'>
+        <label htmlFor='telefonnummer'>Telefonnummer</label>
         <input
-          type="tel"
-          name="phone"
+          type='tel'
+          name='phone'
           value={formData.phone}
           onChange={handleChange}
-          id="telefonnummer"
+          id='telefonnummer'
           required
         />
       </div>
 
-      <div className="form_block form_copmpany">
-        <label htmlFor="company">Företag</label>
+      <div className='form_block form_company'>
+        <label htmlFor='company'>Företag</label>
         <input
-          type="text"
-          name="company"
+          type='text'
+          name='company'
           value={formData.company}
           onChange={handleChange}
-          id="company"
+          id='company'
         />
       </div>
 
-      <div className="form_block form_message">
-        <label htmlFor="message">Meddelande</label>
+      <div className='form_block form_message'>
+        <label htmlFor='message'>Meddelande</label>
         <textarea
           value={formData.message}
-          name="message"
+          name='message'
           onChange={handleChange}
-          id="message"
+          id='message'
           required
         ></textarea>
       </div>
 
-      <div className="form_block">
+      <div
+        className='form_captcha'
+        data-sitekey='6LfO1GYqAAAAAMkT5CFxAt2Q8LSWu_fTTebpb7x8'
+      ></div>
+
+      <div className='form_block'>
         <Button
-          type="submit"
+          type='submit'
           disabled={disableButton}
           text={
             disableButton ? (
               <ClipLoader
                 size={15}
-                color="white"
-                aria-label="Loading Spinner"
-                data-testid="loader"
+                color='white'
+                aria-label='Loading Spinner'
+                data-testid='loader'
               />
             ) : (
-              "Skicka"
+              'Skicka'
             )
           }
         />
       </div>
-        <div>
-          {status}
-        </div>
+      <div>{status}</div>
     </form>
   );
 }
