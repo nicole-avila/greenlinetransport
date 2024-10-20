@@ -1,0 +1,54 @@
+.response_message {
+  border: 1px solid transparent;
+  border-radius: 30px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.message_icon {
+  border: 10px solid transparent;
+  border-radius: 100px;
+  line-height: 0.7rem;
+}
+
+.response_message svg {
+  width: 30px;
+  height: 30px;
+}
+
+.response_message.success {
+  border-color: green;
+}
+
+.response_message.success svg {
+  color: green;
+}
+
+.message_icon.success {
+  border-color: rgb(220, 255, 224);
+}
+
+.response_message.warning {
+  border-color: rgb(220, 173, 54);
+}
+
+.message_icon.warning {
+  border-color: rgb(255, 249, 220);
+}
+
+.response_message.warning svg {
+  color: rgb(220, 173, 54);
+}
+
+.response_message.error {
+  border-color: red;
+}
+
+.response_message.error svg {
+  color: red;
+}
+
+.message_icon.error {
+  border-color: rgb(255, 220, 220);
+}

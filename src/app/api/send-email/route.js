@@ -38,7 +38,7 @@ export async function POST(req) {
     });
 
     const mailOptions = {
-      from: process.env.EMAIL_USER,
+      from: 'info@greenlinetransport.se',
       to: process.env.EMAIL_USER,
       subject: `Kontaktförfrågan från ${name}`,
       text: `

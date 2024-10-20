@@ -1,9 +1,10 @@
 'use client';
 import { useState, useRef } from 'react';
-import Button from '../_atoms/Button';
+import Button from '../_atoms/Button/Button';
 import { ClipLoader } from 'react-spinners';
 import './Form.css';
 import ReCAPTCHA from 'react-google-recaptcha';
+import ResponseMessage from '../_atoms/ResponseMessage/ResponseMessage';
 
 export default function Form() {
   const [formData, setFormData] = useState({
@@ -14,7 +15,7 @@ export default function Form() {
     message: '',
   });
   const [disableButton, setDisableButton] = useState(false);
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState({ type: '', message: '' });
   const [recaptchaValue, setRecaptchaValue] = useState(null);
   const recaptchaRef = useRef(null);
 
@@ -39,7 +40,7 @@ export default function Form() {
     const captchaToken = grecaptcha.getResponse();
 
     if (!captchaToken) {
-      setStatus('Please complete the reCAPTCHA.');
+      setStatus({ type: 'error', message: 'Please complete the reCAPTCHA.' });
       setDisableButton(false);
       return;
     }
@@ -64,14 +65,22 @@ export default function Form() {
 
       const result = await response.json();
       if (result.success) {
-        setStatus(
-          'Tack för ditt meddelande. Vi hör av oss till dig så snart vi kan.'
-        );
+        setStatus({
+          type: 'success',
+          message:
+            'Tack för ditt meddelande. Vi hör av oss till dig så snart vi kan.',
+        });
       } else {
-        setStatus('Något gick fel, försök igen senare.');
+        setStatus({
+          type: 'warning',
+          message: 'Något gick fel, försök igen senare.',
+        });
       }
     } catch (error) {
-      setStatus('Fel vid skickande av formulär. Vänligen försök igen.');
+      setStatus({
+        type: 'error',
+        message: 'Fel vid skickande av formulär. Vänligen försök igen.',
+      });
     } finally {
       setFormData({
         name: '',
@@ -169,7 +178,7 @@ export default function Form() {
           }
         />
       </div>
-      <div>{status}</div>
+      <ResponseMessage type={status.type} message={status.message} />
     </form>
   );
 }
