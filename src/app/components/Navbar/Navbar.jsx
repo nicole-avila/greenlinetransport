@@ -16,7 +16,7 @@ function Navbar() {
   return (
     <nav className='navbar'>
       <div>
-        <Link href='#'>
+        <Link href='/'>
           <Image
             className='navbar_logo'
             src='/images/whiteLogoXs.svg'

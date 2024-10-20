@@ -1,10 +1,11 @@
-"use client";
-import Image from "next/image";
-import "./Footer.css";
-import useContentful from "@/lib/contentful";
+'use client';
+import Image from 'next/image';
+import './Footer.css';
+import useContentful from '@/lib/contentful';
+import Link from 'next/link';
 
 function Footer() {
-  const { data, loading, error } = useContentful("footer");
+  const { data, loading, error } = useContentful('footer');
 
   if (loading) {
     return <div>Loading...</div>;
@@ -19,17 +20,19 @@ function Footer() {
   }
 
   return (
-    <div className="footer">
-      <div className="footer_content">
-        <div className="footer_shortcut">
+    <div className='footer'>
+      <div className='footer_content'>
+        <div className='footer_shortcut'>
           <h2>genvägar</h2>
-          <li className="footer_shortcut-li">våra tjänster</li>
-          <li className="footer_shortcut-li">fair transport</li>
-          <li className="footer_shortcut-li">om oss</li>
-          <li className="footer_shortcut-li">kontakt</li>
+          <li className='footer_shortcut-li'>våra tjänster</li>
+          <li className='footer_shortcut-li'>fair transport</li>
+          <li className='footer_shortcut-li'>om oss</li>
+          <li className='footer_shortcut-li'>
+            <Link href='/kontakt'>kontakt</Link>
+          </li>
         </div>
 
-        <div className="footer_find-us">
+        <div className='footer_find-us'>
           <div>
             <h2>hitta oss</h2>
             <p>{data.streetAddress}</p>
@@ -45,14 +48,14 @@ function Footer() {
           </div>
         </div>
 
-        <div className="footer_media">
+        <div className='footer_media'>
           <h2>sociala medier</h2>
-          <div className="footer_icon">
-            <Image src="/images/instagram.svg" alt="" width="30" height="30" />
-            <Image src="/images/linkedIn.svg" alt="" width="30" height="30" />
+          <div className='footer_icon'>
+            <Image src='/images/instagram.svg' alt='' width='30' height='30' />
+            <Image src='/images/linkedIn.svg' alt='' width='30' height='30' />
           </div>
         </div>
-        <div className="footer_svg-bg"></div>
+        <div className='footer_svg-bg'></div>
       </div>
     </div>
   );

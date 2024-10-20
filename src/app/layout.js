@@ -1,19 +1,9 @@
-import localFont from 'next/font/local';
 import './globals.css';
 import Navbar from './components/Navbar/Navbar';
-import { Suspense } from 'react'; // Import Suspense
+import { Suspense } from 'react';
 import Footer from './components/Footer/Footer';
-
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff2',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-});
-const geistMono = localFont({
-  src: './fonts/GeistVF.woff2',
-  variable: '--font-geist-mono',
-  weight: '100 900',
-});
+import { Inter } from 'next/font/google';
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'Green Line Transport',
@@ -31,7 +21,7 @@ export default function RootLayout({ children }) {
           defer
         ></script>
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={inter.className}>
         <Suspense fallback={<div>Loading...</div>}>
           <Navbar />
           {children}
