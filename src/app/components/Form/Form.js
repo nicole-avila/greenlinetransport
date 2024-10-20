@@ -1,62 +1,80 @@
+'use clients'
 import { useState } from "react";
 import Button from "../_atoms/Button";
 import { ClipLoader } from "react-spinners";
 import "./Form.css";
 
 export default function Form() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [company, setCompany] = useState("");
-  const [message, setMessage] = useState("");
-  const [honeypot, setHoneypot] = useState("");
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    message: '',
+  });
   const [disableButton, setDisableButton] = useState(false);
+  const [status, setStatus] = useState('');
 
-  function onSubmit(e) {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const onSubmit = async (e) => {
     e.preventDefault();
-    e.stopPropagation();
-    setSuccess(false);
     setDisableButton(true);
-    if (honeypot.length > 0) {
-      return;
-    }
 
-    fetch("https://formcarry.com/s/7zdZAMX4kJT", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name, email, phone, company, message }),
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        if (response.code === 200) {
-          setSuccess(
-            "Ditt meddelande är skickat. Vi hör av oss till dig så snart vi kan."
-          );
-        } else if (response.code === 422) {
-          setError(response.message);
-        } else {
-          setError(response.message);
-        }
-        setDisableButton(false);
-      })
-      .catch((error) => {
-        setError(error.message ? error.message : error);
+    const { name, email, phone, company, message } = formData;
+
+    const requestData = {
+      name,
+      email,
+      phone,
+      company,
+      message,
+    };
+
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
       });
-  }
+
+      const result = await response.json();
+      if (result.success) {
+        setStatus('Tack för ditt meddelande. Vi hör av oss till dig så snart vi kan.');
+      } else {
+        setStatus('Något gick fel, försök igen senare.');
+      }
+    } catch (error) {
+      setStatus('Fel vid skickande av formulär. Vänligen försök igen.');
+    } finally {
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        message: '',
+      });
+      setDisableButton(false);
+    }
+  };
 
   return (
-    <form className="contact_form" onSubmit={(e) => onSubmit(e)}>
+    <form className="contact_form" onSubmit={onSubmit}>
       <div className="form_block form_name">
         <label htmlFor="name">*Namn</label>
         <input
           type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
           id="name"
           required
         />
@@ -66,8 +84,9 @@ export default function Form() {
         <label htmlFor="email">*E-post</label>
         <input
           type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
           id="email"
           required
         />
@@ -77,8 +96,9 @@ export default function Form() {
         <label htmlFor="telefonnummer">Telefonnummer</label>
         <input
           type="tel"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
+          name="phone"
+          value={formData.phone}
+          onChange={handleChange}
           id="telefonnummer"
           required
         />
@@ -88,28 +108,22 @@ export default function Form() {
         <label htmlFor="company">Företag</label>
         <input
           type="text"
-          value={company}
-          onChange={(e) => setCompany(e.target.value)}
+          name="company"
+          value={formData.company}
+          onChange={handleChange}
           id="company"
-          required
         />
       </div>
 
       <div className="form_block form_message">
         <label htmlFor="message">Meddelande</label>
         <textarea
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          value={formData.message}
+          name="message"
+          onChange={handleChange}
           id="message"
           required
         ></textarea>
-      </div>
-      <div style={{ display: "none" }}>
-        <input
-          type="text"
-          name="honeypot"
-          onChange={(e) => setHoneypot(e.target.value)}
-        />
       </div>
 
       <div className="form_block">
@@ -130,11 +144,9 @@ export default function Form() {
           }
         />
       </div>
-      {success ? (
         <div>
-          Tack för ditt meddelande. Vi hör av oss till dig så snart vi kan.
+          {status}
         </div>
-      ) : null}
     </form>
   );
 }
