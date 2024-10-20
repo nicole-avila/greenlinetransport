@@ -1,8 +1,9 @@
 'use client';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Button from '../_atoms/Button';
 import { ClipLoader } from 'react-spinners';
 import './Form.css';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 export default function Form() {
   const [formData, setFormData] = useState({
@@ -14,6 +15,8 @@ export default function Form() {
   });
   const [disableButton, setDisableButton] = useState(false);
   const [status, setStatus] = useState('');
+  const [recaptchaValue, setRecaptchaValue] = useState(null);
+  const recaptchaRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,6 +24,10 @@ export default function Form() {
       ...prevState,
       [name]: value,
     }));
+  };
+
+  const handleRecaptchaChange = (v) => {
+    setRecaptchaValue(v);
   };
 
   const onSubmit = async (e) => {
@@ -138,10 +145,11 @@ export default function Form() {
         ></textarea>
       </div>
 
-      <div
-        className='form_captcha'
-        data-sitekey='6LfO1GYqAAAAAMkT5CFxAt2Q8LSWu_fTTebpb7x8'
-      ></div>
+      <ReCAPTCHA
+        ref={recaptchaRef}
+        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+        onChange={handleRecaptchaChange}
+      />
 
       <div className='form_block'>
         <Button
