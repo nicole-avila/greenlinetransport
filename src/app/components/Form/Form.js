@@ -1,140 +1,167 @@
-import { useState } from "react";
-import Button from "../_atoms/Button";
-import { ClipLoader } from "react-spinners";
-import "./Form.css";
+'use client';
+import { useState } from 'react';
+import Button from '../_atoms/Button';
+import { ClipLoader } from 'react-spinners';
+import './Form.css';
 
 export default function Form() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [company, setCompany] = useState("");
-  const [message, setMessage] = useState("");
-  const [honeypot, setHoneypot] = useState("");
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    message: '',
+  });
   const [disableButton, setDisableButton] = useState(false);
+  const [status, setStatus] = useState('');
 
-  function onSubmit(e) {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const onSubmit = async (e) => {
     e.preventDefault();
-    e.stopPropagation();
-    setSuccess(false);
     setDisableButton(true);
-    if (honeypot.length > 0) {
+
+    const { name, email, phone, company, message } = formData;
+
+    const captchaToken = grecaptcha.getResponse();
+
+    if (!captchaToken) {
+      setStatus('Please complete the reCAPTCHA.');
+      setDisableButton(false);
       return;
     }
 
-    fetch("https://formcarry.com/s/7zdZAMX4kJT", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name, email, phone, company, message }),
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        if (response.code === 200) {
-          setSuccess(
-            "Ditt meddelande är skickat. Vi hör av oss till dig så snart vi kan."
-          );
-        } else if (response.code === 422) {
-          setError(response.message);
-        } else {
-          setError(response.message);
-        }
-        setDisableButton(false);
-      })
-      .catch((error) => {
-        setError(error.message ? error.message : error);
+    const requestData = {
+      name,
+      email,
+      phone,
+      company,
+      message,
+      captchaToken,
+    };
+
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
       });
-  }
+
+      const result = await response.json();
+      if (result.success) {
+        setStatus(
+          'Tack för ditt meddelande. Vi hör av oss till dig så snart vi kan.'
+        );
+      } else {
+        setStatus('Något gick fel, försök igen senare.');
+      }
+    } catch (error) {
+      setStatus('Fel vid skickande av formulär. Vänligen försök igen.');
+    } finally {
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        message: '',
+      });
+      grecaptcha.reset();
+      setDisableButton(false);
+    }
+  };
 
   return (
-    <form className="contact_form" onSubmit={(e) => onSubmit(e)}>
-      <div className="form_block form_name">
-        <label htmlFor="name">*Namn</label>
+    <form className='contact_form' onSubmit={onSubmit}>
+      <div className='form_block form_name'>
+        <label htmlFor='name'>*Namn</label>
         <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          id="name"
+          type='text'
+          name='name'
+          value={formData.name}
+          onChange={handleChange}
+          id='name'
           required
         />
       </div>
 
-      <div className="form_block form_email">
-        <label htmlFor="email">*E-post</label>
+      <div className='form_block form_email'>
+        <label htmlFor='email'>*E-post</label>
         <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          id="email"
+          type='email'
+          name='email'
+          value={formData.email}
+          onChange={handleChange}
+          id='email'
           required
         />
       </div>
 
-      <div className="form_block form_phone">
-        <label htmlFor="telefonnummer">Telefonnummer</label>
+      <div className='form_block form_phone'>
+        <label htmlFor='telefonnummer'>Telefonnummer</label>
         <input
-          type="tel"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          id="telefonnummer"
+          type='tel'
+          name='phone'
+          value={formData.phone}
+          onChange={handleChange}
+          id='telefonnummer'
           required
         />
       </div>
 
-      <div className="form_block form_copmpany">
-        <label htmlFor="company">Företag</label>
+      <div className='form_block form_company'>
+        <label htmlFor='company'>Företag</label>
         <input
-          type="text"
-          value={company}
-          onChange={(e) => setCompany(e.target.value)}
-          id="company"
-          required
+          type='text'
+          name='company'
+          value={formData.company}
+          onChange={handleChange}
+          id='company'
         />
       </div>
 
-      <div className="form_block form_message">
-        <label htmlFor="message">Meddelande</label>
+      <div className='form_block form_message'>
+        <label htmlFor='message'>Meddelande</label>
         <textarea
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          id="message"
+          value={formData.message}
+          name='message'
+          onChange={handleChange}
+          id='message'
           required
         ></textarea>
       </div>
-      <div style={{ display: "none" }}>
-        <input
-          type="text"
-          name="honeypot"
-          onChange={(e) => setHoneypot(e.target.value)}
-        />
-      </div>
 
-      <div className="form_block">
+      <div
+        className='form_captcha'
+        data-sitekey='6LfO1GYqAAAAAMkT5CFxAt2Q8LSWu_fTTebpb7x8'
+      ></div>
+
+      <div className='form_block'>
         <Button
-          type="submit"
+          type='submit'
           disabled={disableButton}
           text={
             disableButton ? (
               <ClipLoader
                 size={15}
-                color="white"
-                aria-label="Loading Spinner"
-                data-testid="loader"
+                color='white'
+                aria-label='Loading Spinner'
+                data-testid='loader'
               />
             ) : (
-              "Skicka"
+              'Skicka'
             )
           }
         />
       </div>
-      {success ? (
-        <div>
-          Tack för ditt meddelande. Vi hör av oss till dig så snart vi kan.
-        </div>
-      ) : null}
+      <div>{status}</div>
     </form>
   );
 }
