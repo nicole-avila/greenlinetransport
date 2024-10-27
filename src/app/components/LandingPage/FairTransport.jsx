@@ -5,17 +5,17 @@ import Link from "next/link";
 
 function FairTransport({ data }) {
   return (
-    <div class="content-wrapper">
-      <div class="content-image">
+    <div className="content-wrapper">
+      <div className="content-image">
         <Image
           src={`https:${data.fairTransportImage.fields.file.url}`}
           alt="Fair Transport Image"
           width={250}
           height={300}
-          class="image-style"
+          className="image-style"
         />
       </div>
-      <div class="content-text">
+      <div className="content-text">
         <h2>{data.fairTransportTitle}</h2>
         <p>{data.fairTransportText}</p>
         <br />
@@ -32,7 +32,7 @@ function FairTransport({ data }) {
             <strong>Our Mission:</strong> {data.fairTransportShortText}
           </p>
         </div>
-        <div class="content-icon">
+        <div className="content-icon">
           <Image
             src="/images/link-line.svg"
             alt="icon in svg file"

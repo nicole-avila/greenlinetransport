@@ -14,13 +14,13 @@
 }
 
 .footer::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('/images/footerLogo.svg');
+  background-image: url("/images/footerLogo.svg");
   background-position: right;
   background-repeat: no-repeat;
   background-size: contain;
@@ -43,8 +43,13 @@
   margin: 0.5rem 0;
 }
 
+.footer_shortcut {
+  margin-left: 1rem;
+}
+
 .footer_shortcut-li {
-  margin: 0.9rem 0;
+  display: flex;
+  margin: 0.9rem 2rem 0 0;
   font-size: 1rem;
   list-style: none;
   cursor: pointer;
@@ -53,6 +58,22 @@
 
 .footer_shortcut-li:hover {
   border-bottom: 1px solid #fff;
+}
+
+.footer_shortcut-li a {
+  cursor: pointer;
+}
+
+.footer-contact,
+.footer-find-us {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.footer-email {
+  margin-top: 0.5rem;
+  cursor: pointer;
 }
 
 .footer_media {
@@ -65,9 +86,10 @@
   gap: 1rem;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 530px) {
   .footer {
     padding: 0;
+    margin-top: 3rem;
   }
   .footer::before {
     background-position: bottom;
@@ -80,5 +102,11 @@
     flex-direction: column-reverse;
     min-height: 650px;
     justify-content: flex-end;
+  }
+  .footer_shortcut {
+    margin-left: 0;
+  }
+  .footer-email {
+    margin-top: 1rem;
   }
 }
