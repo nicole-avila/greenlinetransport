@@ -33,6 +33,7 @@
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
+  z-index: 999;
 }
 
 .footer h2 {
@@ -54,6 +55,8 @@
   list-style: none;
   cursor: pointer;
   text-transform: uppercase;
+  height: 1.4rem;
+  width: fit-content;
 }
 
 .footer_shortcut-li:hover {
