@@ -24,7 +24,8 @@ export default function Contact() {
         heroImage={`https:${data.heroImage.fields.file.url}`}
         heroTitle={data.heroTitle}
         heroParagraph={data.heroParagraph}
-      />{' '}
+        textPosition='bottom'
+      />
       <div className='margins'>
         <Form />
       </div>

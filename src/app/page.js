@@ -24,6 +24,7 @@ export default function Home() {
       <Hero
         heroImage={`https:${data.heroImage.fields.file.url}`}
         heroTitle={data.heroTitle}
+        heroParagraph={data.heroParagraph}
       />
       <div className='margins'>
         <div className='landing'>

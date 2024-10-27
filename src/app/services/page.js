@@ -24,6 +24,7 @@ function Services() {
       <Hero
         heroImage={`https:${data.heroImage.fields.file.url}`}
         heroTitle={data.heroTitle}
+        heroParagraph={data.heroParagraph}
       />
       <div className='margins'>
         <ServiceCardLarge

@@ -3,7 +3,7 @@ import './Hero.css';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-function Hero({ heroImage, heroTitle }) {
+function Hero({ heroImage, heroTitle, heroParagraph, textPosition }) {
   const [blurDataURL, setBlurDataURL] = useState('');
 
   useEffect(() => {
@@ -23,24 +23,30 @@ function Hero({ heroImage, heroTitle }) {
     <>
       {blurDataURL && (
         <div className='hero'>
-          <p className='hero__title'>{heroTitle}</p>
-          {heroImage && (
-            <Image
-              src={`${heroImage}?fm=webp&q=80`}
-              alt='Hero Image'
-              width={1920}
-              height={700}
-              priority
-              className='hero__image'
-              placeholder='blur'
-              blurDataURL={blurDataURL}
-              sizes='(max-width: 500px) 100vw, (max-width: 800px) 100vw, 100vw'
-              style={{
-                objectFit: 'cover',
-                maxHeight: '700px',
-              }}
-            />
-          )}
+          <div className={`hero__title hero-text-${textPosition}`}>
+            {heroTitle}
+            <br />
+            <div className='hero-subtext'>{heroParagraph}</div>
+          </div>
+          <div className='hero-image-wrapper'>
+            {heroImage && (
+              <Image
+                src={`${heroImage}?fm=webp&q=80`}
+                alt='Hero Image'
+                width={1920}
+                height={700}
+                priority
+                className='hero__image'
+                placeholder='blur'
+                blurDataURL={blurDataURL}
+                sizes='(max-width: 500px) 100vw, (max-width: 800px) 100vw, 100vw'
+                style={{
+                  objectFit: 'cover',
+                  maxHeight: '700px',
+                }}
+              />
+            )}
+          </div>
         </div>
       )}
     </>
