@@ -9,9 +9,11 @@
   top: 3%;
   left: 2%;
   color: #f5f5f5;
+  text-shadow: -2px -2px 0 #202020bd, 2px -2px 0 #202020, -2px 2px 0 #202020,
+    2px 2px 0 #202020, -2px 0px 0 #202020, 2px 0px 0 #202020, 0px -2px 0 #202020,
+    0px 2px 0 #202020;
   font-size: 5rem;
   padding: 10px;
-  backdrop-filter: blur(1px);
   border-radius: 5px;
   text-transform: uppercase;
   z-index: 10;
