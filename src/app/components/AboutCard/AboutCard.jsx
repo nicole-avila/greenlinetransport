@@ -1,6 +1,7 @@
 'use client';
 import Image from 'next/image';
 import './AboutCard.css';
+import Button from '../_atoms/Button/Button';
 
 export default function AboutCard({
   imagePosition,
@@ -8,13 +9,19 @@ export default function AboutCard({
   imageUrl,
   imageAlt,
   buttonText,
-  buttonLink,
+  buttonHref,
 }) {
   return (
     <div className={`about-card about-card-${imagePosition}`}>
       <div className='about-card-text'>
-        {text}
-        {buttonText && <div>hej</div>}
+        <p>{text}</p>
+        {buttonText && (
+          <div>
+            <br />
+            <br />
+            <Button text={buttonText} href={buttonHref} />
+          </div>
+        )}
       </div>
       <div className='about-card-image'>
         <Image
