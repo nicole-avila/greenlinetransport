@@ -9,8 +9,6 @@
   font-weight: 400;
   letter-spacing: 1px;
   overflow: hidden;
-  border-bottom: 1px solid #e9ecef;
-  /* position: sticky; */
 }
 
 .navbar_hamburger {
@@ -52,7 +50,7 @@
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 60px;
+    top: 62px;
     right: 0;
     background-color: #3f623d;
     width: 100%;
@@ -69,6 +67,9 @@
 }
 
 @media screen and (max-width: 400px) {
+  .navbar {
+    padding-top: 0.5rem;
+  }
   .navbar_logo {
     width: 80%;
   }

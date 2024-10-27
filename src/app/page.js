@@ -1,7 +1,7 @@
 "use client";
 import useContentful from "@/lib/contentful";
-import Image from "next/image";
 import Hero from "./components/Hero/Hero";
+import LandingPage from "./components/LandingPage/LandingPage";
 
 export default function Home() {
   const { data, loading, error } = useContentful("landingPage");
@@ -20,7 +20,11 @@ export default function Home() {
 
   return (
     <div>
-      <p>{data.heroTitle}</p>
+      <Hero
+        heroImage={`https:${data.heroImage.fields.file.url}`}
+        heroTitle={data.heroTitle}
+      />
+      <LandingPage data={data} />
     </div>
   );
 }
