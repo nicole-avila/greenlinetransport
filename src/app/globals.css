@@ -16,3 +16,8 @@ a {
   text-decoration: none;
   cursor: pointer !important;
 }
+
+.margins {
+  margin: auto;
+  padding: 0.5rem;
+}

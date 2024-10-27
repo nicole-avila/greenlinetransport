@@ -25,7 +25,7 @@ function ServiceCardSmall({
       <div className='landing-text-content'>
         <Image
           src={icon}
-          iconAlt={iconAlt}
+          alt={iconAlt}
           width={25}
           height={25}
           className='landing-icon'

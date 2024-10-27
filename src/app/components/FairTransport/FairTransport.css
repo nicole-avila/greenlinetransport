@@ -2,8 +2,7 @@
 .content-wrapper {
   width: 100%;
   display: flex;
-  margin: 4rem auto;
-  padding: 0 2rem;
+  margin: auto;
 }
 
 .content-image {
@@ -21,7 +20,6 @@
 .content-text {
   flex: 1;
   text-align: left;
-  padding-left: 3rem;
 }
 
 .content-text h2 {
@@ -71,7 +69,6 @@
 @media (max-width: 815px) {
   .content-wrapper {
     flex-direction: column;
-    padding: 0 2rem;
   }
   .content-image {
     margin-bottom: 2rem;

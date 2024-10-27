@@ -1,0 +1,32 @@
+.about-card {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.about-card-image img {
+  width: 100%;
+}
+
+@media screen and (min-width: 1024px) {
+  .about-card {
+    flex-direction: row;
+    gap: 5%;
+  }
+
+  .about-card-left {
+    flex-direction: row-reverse !important;
+  }
+  .about-card-right {
+    flex-direction: row !important;
+  }
+
+  .about-card-image img {
+    width: 400px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .about-card-image img {
+    width: 666px;
+  }
+}
