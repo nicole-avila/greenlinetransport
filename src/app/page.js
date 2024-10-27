@@ -1,7 +1,7 @@
 'use client';
 import useContentful from '@/lib/contentful';
 import Hero from './components/Hero/Hero';
-import ServiceCard from './components/ServiceCard/ServiceCard';
+import ServiceCardSmall from './components/ServiceCardSmall/ServiceCardSmall';
 import FairTransport from './components/FairTransport/FairTransport';
 
 export default function Home() {
@@ -29,30 +29,30 @@ export default function Home() {
       <div className='landing'>
         <div className='landing-grid-container'>
           <div className='landing-grid'>
-            <ServiceCard
+            <ServiceCardSmall
               shortText={data.budservice.fields.shortText}
-              linkHref='/services'
+              linkHref='/services#budservice'
               title={data.budservice.fields.title}
-              imageUrl={`https:${data.thermoDistribution.fields.image.fields.file.url}`}
-              imageAlt='image from the company green line transport the company green line transport'
+              imageUrl={`https:${data.budservice.fields.image.fields.file.url}`}
+              imageAlt={data.budservice.fields.image.fields.title}
               icon='/images/truck.svg'
               iconAlt='icon of a truck'
             />
-            <ServiceCard
+            <ServiceCardSmall
               shortText={data.thermoDistribution.fields.shortText}
-              linkHref='/services'
+              linkHref='/services#thermo-distribution'
               title={data.thermoDistribution.fields.title}
-              imageUrl={`https:${data.styckegodsOmlastning.fields.image.fields.file.url}`}
-              imageAlt='image from the company green line transport the company green line transport'
+              imageUrl={`https:${data.thermoDistribution.fields.image.fields.file.url}`}
+              imageAlt={data.thermoDistribution.fields.image.fields.title}
               icon='/images/thermo.svg'
               iconAlt='icon of a thermometer and snowflake'
             />
-            <ServiceCard
+            <ServiceCardSmall
               shortText={data.styckegodsOmlastning.fields.shortText}
-              linkHref='/services'
+              linkHref='/services#styckegods-omlastning'
               title={data.styckegodsOmlastning.fields.title}
-              imageUrl={`https:${data.budservice.fields.image.fields.file.url}`}
-              imageAlt='image from the company green line transport the company green line transport'
+              imageUrl={`https:${data.styckegodsOmlastning.fields.image.fields.file.url}`}
+              imageAlt={data.styckegodsOmlastning.fields.image.fields.title}
               icon='/images/hand-truck.svg'
               iconAlt='icon of a handtruck loaded with boxes'
             />
