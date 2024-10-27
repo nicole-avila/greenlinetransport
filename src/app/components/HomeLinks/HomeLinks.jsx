@@ -5,8 +5,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-function HomeLinks({ showLinks }) {
+function HomeLinks({ showLinks, setShowLinks }) {
   const pathname = usePathname();
+
+  const handleLinkClick = () => {
+    setShowLinks(false);
+  };
 
   return (
     <>
@@ -27,24 +31,25 @@ function HomeLinks({ showLinks }) {
           <Link
             href='/services'
             className={pathname === '/services' ? 'active_route' : ''}
+            onClick={handleLinkClick}
           >
             våra tjänster
           </Link>
         </li>
         <li className='navbar_link-li'>
-          {' '}
           <Link
             href='/fair-transport'
             className={pathname === '/fair-transport' ? 'active_route' : ''}
+            onClick={handleLinkClick}
           >
             fair transport
           </Link>
         </li>
         <li className='navbar_link-li'>
-          {' '}
           <Link
             href='/om-oss'
             className={pathname === '/om-oss' ? 'active_route' : ''}
+            onClick={handleLinkClick}
           >
             om oss
           </Link>
@@ -53,6 +58,7 @@ function HomeLinks({ showLinks }) {
           <Link
             href='/kontakt'
             className={pathname === '/kontakt' ? 'active_route' : ''}
+            onClick={handleLinkClick}
           >
             kontakt
           </Link>
