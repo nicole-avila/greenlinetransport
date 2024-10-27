@@ -1,6 +1,7 @@
 import './ServiceCardSmall.css';
 import Image from 'next/image';
 import Link from 'next/link';
+import Button from '../_atoms/Button/Button';
 
 function ServiceCardSmall({
   linkHref,
@@ -32,9 +33,7 @@ function ServiceCardSmall({
         />
         <h2 className='title'>{title}</h2>
         <p className='landing-description'>{shortText}</p>
-        <Link href={linkHref} passHref>
-          <button className='landing-button'>Läs Mer</button>
-        </Link>
+        <Button href={linkHref} text='Läs Mer' />
       </div>
     </>
   );

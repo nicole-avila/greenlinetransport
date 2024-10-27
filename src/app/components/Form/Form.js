@@ -162,6 +162,7 @@ export default function Form() {
 
       <div className='form_block'>
         <Button
+          isButton={true}
           type='submit'
           disabled={disableButton}
           text={

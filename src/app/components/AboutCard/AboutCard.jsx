@@ -2,10 +2,20 @@
 import Image from 'next/image';
 import './AboutCard.css';
 
-export default function AboutCard({ imagePosition, text, imageUrl, imageAlt }) {
+export default function AboutCard({
+  imagePosition,
+  text,
+  imageUrl,
+  imageAlt,
+  buttonText,
+  buttonLink,
+}) {
   return (
     <div className={`about-card about-card-${imagePosition}`}>
-      <div className='about-card-text'>{text}</div>
+      <div className='about-card-text'>
+        {text}
+        {buttonText && <div>hej</div>}
+      </div>
       <div className='about-card-image'>
         <Image
           src={imageUrl}

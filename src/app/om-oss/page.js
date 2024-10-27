@@ -33,8 +33,9 @@ export default function About() {
         text={data.personnelText}
         imageUrl={`https://${data.personnelImage.fields.file.url}`}
         imageAlt={data.personnelImage.fields.file.fileName}
+        buttonText='Kontakta Oss'
+        buttonLink='/kontakt'
       />
-      {console.log(data)}
     </div>
   );
 }

@@ -15,3 +15,17 @@
 .button:hover {
   background: #2e4a2c;
 }
+
+.link-button {
+  background-color: #3f623d;
+  color: #f5f5f5;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin-top: 3rem;
+  width: fit-content;
+}
+
+.link-button:hover {
+  background-color: #2e4a2c;
+}
