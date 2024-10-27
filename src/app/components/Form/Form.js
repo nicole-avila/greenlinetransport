@@ -168,7 +168,7 @@ export default function Form() {
             disableButton ? (
               <ClipLoader
                 size={15}
-                color='white'
+                color='#F5F5F5'
                 aria-label='Loading Spinner'
                 data-testid='loader'
               />
