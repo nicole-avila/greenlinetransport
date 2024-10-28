@@ -162,13 +162,14 @@ export default function Form() {
 
       <div className='form_block'>
         <Button
+          isButton={true}
           type='submit'
           disabled={disableButton}
           text={
             disableButton ? (
               <ClipLoader
                 size={15}
-                color='white'
+                color='#F5F5F5'
                 aria-label='Loading Spinner'
                 data-testid='loader'
               />

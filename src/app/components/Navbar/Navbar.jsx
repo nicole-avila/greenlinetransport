@@ -1,8 +1,8 @@
-"use client";
-import "./Navbar.css";
-import Image from "next/image";
-import HomeLinks from "@/app/components/HomeLinks/HomeLinks";
-import { useState } from "react";
+'use client';
+import './Navbar.css';
+import Image from 'next/image';
+import HomeLinks from '@/app/components/HomeLinks/HomeLinks';
+import { useState } from 'react';
 
 function Navbar() {
   const [showLinks, setShowLinks] = useState(false);
@@ -12,12 +12,12 @@ function Navbar() {
   };
 
   return (
-    <nav className="navbar">
-      <HomeLinks showLinks={showLinks} />
+    <nav className='navbar'>
+      <HomeLinks showLinks={showLinks} setShowLinks={setShowLinks} />
       <Image
-        className="navbar_hamburger"
-        src="/images/whiteHamburger.svg"
-        alt="Toggle navigation"
+        className='navbar_hamburger'
+        src='/images/whiteHamburger.svg'
+        alt='Toggle navigation'
         onClick={handleShowLinks}
         width={30}
         height={30}
