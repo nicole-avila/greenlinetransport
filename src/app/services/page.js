@@ -5,7 +5,7 @@ import useContentful from '@/lib/contentful';
 import ServiceCardLarge from '../components/ServiceCardLarge/ServiceCardLarge';
 
 function Services() {
-  const { data, loading, error } = useContentful('landingPage');
+  const { data, loading, error } = useContentful('service');
 
   if (loading) {
     return <div>Loading...</div>;
@@ -48,7 +48,7 @@ function Services() {
           id='styckegods-omlastning'
           longText={data.styckegodsOmlastning.fields.longText}
         />
-      </div>{' '}
+      </div>
     </div>
   );
 }
