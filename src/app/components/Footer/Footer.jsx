@@ -23,7 +23,7 @@ function Footer() {
     <div className='footer'>
       <div className='footer_content'>
         <div className='footer_shortcut'>
-          <h2>genvägar</h2>
+          <h4>genvägar</h4>
           <Link href='/services' className='footer_shortcut-li'>
             våra tjänser
           </Link>
@@ -40,14 +40,14 @@ function Footer() {
 
         <div className='footer-info'>
           <div className='footer-find-us'>
-            <h2>hitta oss</h2>
+            <h4>hitta oss</h4>
             <p>{data.streetAddress}</p>
             <p>{data.postalcode}</p>
             <p>{data.city}</p>
           </div>
           <br />
           <div className='footer-contact'>
-            <h2>kontakt</h2>
+            <h4>kontakt</h4>
             <p>{data.phoneNumber}</p>
             <p>{data.mobileNumber}</p>
             <p className='footer-email'>{data.email}</p>
@@ -55,7 +55,7 @@ function Footer() {
         </div>
 
         <div className='footer_media'>
-          <h2>sociala medier</h2>
+          <h4>sociala medier</h4>
           <div className='footer_icon'>
             <Image src='/images/instagram.svg' alt='' width='30' height='30' />
             <Image src='/images/linkedIn.svg' alt='' width='30' height='30' />

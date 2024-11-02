@@ -31,7 +31,7 @@ function ServiceCardSmall({
           height={25}
           className='landing-icon'
         />
-        <h2 className='title'>{title}</h2>
+        <h3>{title}</h3>
         <p className='landing-description'>{shortText}</p>
         <Button href={linkHref} text='Läs Mer' />
       </div>

@@ -16,9 +16,7 @@ function ServiceCardLarge({ id, imageUrl, imageAlt, title, longText }) {
           />
         </div>
         <div className='service-text-content'>
-          <h2 className='service-title' id={id}>
-            {title}
-          </h2>
+          <h2 id={id}>{title}</h2>
           <p className='service-desc'>{longText}</p>
         </div>
       </div>

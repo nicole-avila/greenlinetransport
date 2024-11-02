@@ -2,6 +2,7 @@
 import './om-oss.css';
 import useContentful from '@/lib/contentful';
 import AboutCard from '../components/AboutCard/AboutCard';
+import PartnerGallery from '../components/PartnerGallery/PartnerGallery';
 
 export default function About() {
   const { data, loading, error } = useContentful('about');
@@ -36,6 +37,8 @@ export default function About() {
         buttonText='Kontakta Oss'
         buttonHref='/kontakt'
       />
+      <h2>Samarbetspartners</h2>
+      <PartnerGallery partners={data.partners} />
     </div>
   );
 }
