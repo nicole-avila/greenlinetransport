@@ -1,21 +1,21 @@
-'use client';
-import { useState, useRef } from 'react';
-import Button from '../_atoms/Button/Button';
-import { ClipLoader } from 'react-spinners';
-import './Form.css';
-import ReCAPTCHA from 'react-google-recaptcha';
-import ResponseMessage from '../_atoms/ResponseMessage/ResponseMessage';
+"use client";
+import "./Form.css";
+import { useState, useRef } from "react";
+import { ClipLoader } from "react-spinners";
+import ReCAPTCHA from "react-google-recaptcha";
+import Button from "../_atoms/Button/Button";
+import ResponseMessage from "../_atoms/ResponseMessage/ResponseMessage";
 
 export default function Form() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    message: '',
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    message: "",
   });
   const [disableButton, setDisableButton] = useState(false);
-  const [status, setStatus] = useState({ type: '', message: '' });
+  const [status, setStatus] = useState({ type: "", message: "" });
   const [recaptchaValue, setRecaptchaValue] = useState(null);
   const recaptchaRef = useRef(null);
 
@@ -40,7 +40,7 @@ export default function Form() {
     const captchaToken = grecaptcha.getResponse();
 
     if (!captchaToken) {
-      setStatus({ type: 'error', message: 'Please complete the reCAPTCHA.' });
+      setStatus({ type: "error", message: "Please complete the reCAPTCHA." });
       setDisableButton(false);
       return;
     }
@@ -55,10 +55,10 @@ export default function Form() {
     };
 
     try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
+      const response = await fetch("/api/send-email", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(requestData),
       });
@@ -66,28 +66,28 @@ export default function Form() {
       const result = await response.json();
       if (result.success) {
         setStatus({
-          type: 'success',
+          type: "success",
           message:
-            'Tack för ditt meddelande. Vi hör av oss till dig så snart vi kan.',
+            "Tack för ditt meddelande. Vi hör av oss till dig så snart vi kan.",
         });
       } else {
         setStatus({
-          type: 'warning',
-          message: 'Något gick fel, försök igen senare.',
+          type: "warning",
+          message: "Något gick fel, försök igen senare.",
         });
       }
     } catch (error) {
       setStatus({
-        type: 'error',
-        message: 'Fel vid skickande av formulär. Vänligen försök igen.',
+        type: "error",
+        message: "Fel vid skickande av formulär. Vänligen försök igen.",
       });
     } finally {
       setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        message: '',
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        message: "",
       });
       grecaptcha.reset();
       setDisableButton(false);
@@ -95,61 +95,61 @@ export default function Form() {
   };
 
   return (
-    <form className='contact_form' onSubmit={onSubmit}>
-      <div className='form_block form_name'>
-        <label htmlFor='name'>*Namn</label>
+    <form className="contact_form" onSubmit={onSubmit}>
+      <div className="form_block form_name">
+        <label htmlFor="name">*Namn</label>
         <input
-          type='text'
-          name='name'
+          type="text"
+          name="name"
           value={formData.name}
           onChange={handleChange}
-          id='name'
+          id="name"
           required
         />
       </div>
 
-      <div className='form_block form_email'>
-        <label htmlFor='email'>*E-post</label>
+      <div className="form_block form_email">
+        <label htmlFor="email">*E-post</label>
         <input
-          type='email'
-          name='email'
+          type="email"
+          name="email"
           value={formData.email}
           onChange={handleChange}
-          id='email'
+          id="email"
           required
         />
       </div>
 
-      <div className='form_block form_phone'>
-        <label htmlFor='telefonnummer'>Telefonnummer</label>
+      <div className="form_block form_phone">
+        <label htmlFor="telefonnummer">Telefonnummer</label>
         <input
-          type='tel'
-          name='phone'
+          type="tel"
+          name="phone"
           value={formData.phone}
           onChange={handleChange}
-          id='telefonnummer'
+          id="telefonnummer"
           required
         />
       </div>
 
-      <div className='form_block form_company'>
-        <label htmlFor='company'>Företag</label>
+      <div className="form_block form_company">
+        <label htmlFor="company">Företag</label>
         <input
-          type='text'
-          name='company'
+          type="text"
+          name="company"
           value={formData.company}
           onChange={handleChange}
-          id='company'
+          id="company"
         />
       </div>
 
-      <div className='form_block form_message'>
-        <label htmlFor='message'>Meddelande</label>
+      <div className="form_block form_message">
+        <label htmlFor="message">Meddelande</label>
         <textarea
           value={formData.message}
-          name='message'
+          name="message"
           onChange={handleChange}
-          id='message'
+          id="message"
           required
         ></textarea>
       </div>
@@ -160,21 +160,21 @@ export default function Form() {
         onChange={handleRecaptchaChange}
       />
 
-      <div className='form_block'>
+      <div className="form_block">
         <Button
           isButton={true}
-          type='submit'
+          type="submit"
           disabled={disableButton}
           text={
             disableButton ? (
               <ClipLoader
                 size={15}
-                color='#F5F5F5'
-                aria-label='Loading Spinner'
-                data-testid='loader'
+                color="#F5F5F5"
+                aria-label="Loading Spinner"
+                data-testid="loader"
               />
             ) : (
-              'Skicka'
+              "Skicka"
             )
           }
         />
