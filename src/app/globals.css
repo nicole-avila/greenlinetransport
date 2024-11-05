@@ -4,6 +4,7 @@ body {
   overflow-x: hidden;
   background: #fafafb;
   color: #1a1a1a;
+  scroll-behavior: smooth;
 }
 
 * {
@@ -31,11 +32,12 @@ h2 {
 }
 
 h3 {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   width: auto;
   min-width: 155px;
   color: #333;
   text-transform: uppercase;
+  font-weight: 200;
 }
 
 h4 {

@@ -1,6 +1,7 @@
 .landing {
   max-width: 1200px;
   margin: 1rem auto;
+  padding: 0 1rem;
 }
 
 .landing-grid-container {
@@ -44,7 +45,7 @@
 
 .landing-description {
   font-size: 1rem;
-  color: #666;
+  padding-top: 0.5rem;
 }
 
 .landing-link {
@@ -57,11 +58,11 @@
   text-decoration: underline;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 905px) {
   .landing-grid {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    row-gap: 2rem;
+    gap: 2rem;
     max-width: 700px;
     box-shadow: none;
   }
@@ -91,7 +92,6 @@
     row-gap: 0;
     box-shadow: none;
     margin: auto;
-
     max-width: 300px;
     height: auto;
   }
@@ -123,10 +123,8 @@
     margin-bottom: 1rem;
   }
   .landing-text-content {
-    padding-top: 0px;
-  }
-  .landing-text-content {
     margin-top: 0;
+    padding: 0px 0 2rem 0;
   }
   .landing-description {
     margin: 0;

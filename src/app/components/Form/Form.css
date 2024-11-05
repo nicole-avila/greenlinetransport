@@ -25,6 +25,10 @@ textarea {
   margin-bottom: 1rem;
 }
 
+.form_block button {
+  margin-top: 1rem;
+}
+
 @media screen and (min-width: 1024px) {
   .contact_form {
     display: grid;

@@ -1,7 +1,7 @@
-'use client';
-import Image from 'next/image';
-import './AboutCard.css';
-import Button from '../_atoms/Button/Button';
+"use client";
+import "./AboutCard.css";
+import Image from "next/image";
+import Button from "../_atoms/Button/Button";
 
 export default function AboutCard({
   imagePosition,
@@ -13,7 +13,7 @@ export default function AboutCard({
 }) {
   return (
     <div className={`about-card about-card-${imagePosition}`}>
-      <div className='about-card-text'>
+      <div className="about-card-text">
         <p>{text}</p>
         {buttonText && (
           <div>
@@ -23,16 +23,16 @@ export default function AboutCard({
           </div>
         )}
       </div>
-      <div className='about-card-image'>
+      <div className="about-card-image">
         <Image
           src={imageUrl}
           alt={imageAlt}
           width={666}
           height={381}
-          sizes='(max-width: 500px) 100vw, (max-width: 800px) 50vw, 33vw'
+          sizes="(max-width: 500px) 100vw, (max-width: 800px) 50vw, 33vw"
           style={{
-            objectFit: 'cover',
-            height: 'auto',
+            objectFit: "cover",
+            height: "auto",
           }}
         />
       </div>

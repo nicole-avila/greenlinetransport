@@ -12,14 +12,12 @@
     flex-direction: row;
     gap: 5%;
   }
-
   .about-card-left {
     flex-direction: row-reverse !important;
   }
   .about-card-right {
     flex-direction: row !important;
   }
-
   .about-card-image img {
     width: 400px;
   }
@@ -28,5 +26,10 @@
 @media screen and (min-width: 1440px) {
   .about-card-image img {
     width: 666px;
+  }
+}
+@media (max-width: 1024px) {
+  .about-card-text {
+    padding: 1rem;
   }
 }

@@ -14,13 +14,13 @@
 }
 
 .footer::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('/images/footerLogo.svg');
+  background-image: url("/images/footerLogo.svg");
   background-position: right;
   background-repeat: no-repeat;
   background-size: contain;
@@ -38,6 +38,7 @@
 
 .footer_shortcut {
   margin-left: 1rem;
+  min-width: 190px;
 }
 
 .footer_shortcut-li {
@@ -79,6 +80,10 @@
 .footer_icon {
   display: flex;
   gap: 1rem;
+}
+
+.footer_icon-link {
+  cursor: pointer;
 }
 
 @media screen and (max-width: 530px) {
