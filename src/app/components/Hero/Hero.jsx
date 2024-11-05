@@ -27,7 +27,7 @@ function Hero({ heroImage, heroTitle, heroParagraph, textPosition }) {
             {heroTitle}
             <br />
             <div className="hero-subtext">
-              <p>{heroParagraph}</p>
+              <p className="hero-paragraph">{heroParagraph}</p>
             </div>
           </div>
           <div className="hero-image-wrapper">
@@ -41,11 +41,6 @@ function Hero({ heroImage, heroTitle, heroParagraph, textPosition }) {
                 className="hero__image"
                 placeholder="blur"
                 blurDataURL={blurDataURL}
-                sizes="(max-width: 500px) 100vw, (max-width: 800px) 100vw, 100vw"
-                style={{
-                  objectFit: "cover",
-                  maxHeight: "700px",
-                }}
               />
             )}
           </div>

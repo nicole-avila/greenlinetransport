@@ -1,4 +1,5 @@
 "use client";
+import "./globals.css";
 import useContentful from "@/lib/contentful";
 import Hero from "./components/Hero/Hero";
 import ServiceCardSmall from "./components/ServiceCardSmall/ServiceCardSmall";
