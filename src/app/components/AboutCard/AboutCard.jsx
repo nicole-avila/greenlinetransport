@@ -10,10 +10,12 @@ export default function AboutCard({
   imageAlt,
   buttonText,
   buttonHref,
+  title,
 }) {
   return (
     <div className={`about-card about-card-${imagePosition}`}>
       <div className="about-card-text">
+        <h2 className="about-card-title">{title}</h2>
         <p>{text}</p>
         {buttonText && (
           <div>

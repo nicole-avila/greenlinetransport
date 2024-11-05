@@ -20,9 +20,8 @@ function HomeLinks({ showLinks, setShowLinks }) {
             className="navbar_logo"
             src="/images/whiteLogoXs.svg"
             alt="Logo"
-            width={110}
+            width={50}
             height={50}
-            priority
           />
         </Link>
       </div>

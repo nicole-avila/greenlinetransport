@@ -23,7 +23,7 @@ export default function About() {
     <div className="about-wrapper margins">
       <AboutCard
         imagePosition="left"
-        title={data.omOssTitle}
+        title={data.title}
         text={data.omOssText}
         imageUrl={`https://${data.omOssImage.fields.file.url}`}
         imageAlt={data.omOssImage.fields.file.fileName}
@@ -37,7 +37,7 @@ export default function About() {
         buttonText="Kontakta Oss"
         buttonHref="/kontakt"
       />
-      <h2>Samarbetspartners</h2>
+      <h2 className="about-partners">Samarbetspartners</h2>
       <PartnerGallery partners={data.partners} />
     </div>
   );

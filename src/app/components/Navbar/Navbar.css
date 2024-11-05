@@ -11,6 +11,10 @@
   overflow: hidden;
 }
 
+.navbar_logo {
+  width: 100%;
+}
+
 .navbar_hamburger {
   display: none;
 }

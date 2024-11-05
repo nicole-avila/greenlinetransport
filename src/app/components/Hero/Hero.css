@@ -38,6 +38,10 @@
   font-weight: 200;
 }
 
+.hero-paragraph {
+  display: none;
+}
+
 .hero__image {
   position: relative;
   width: 100%;
@@ -54,17 +58,17 @@
   .hero__title {
     font-size: 2.5rem;
   }
+  .hero-paragraph {
+    display: block;
+  }
 }
 
 @media (min-width: 768px) {
   .hero__title {
     font-size: 3rem;
   }
-
-  .hero-subtext {
-    font-size: 1rem;
-    line-height: 2rem;
-    max-width: 80%;
+  .hero-paragraph {
+    display: block;
   }
 }
 
@@ -72,10 +76,12 @@
   .hero__title {
     font-size: 5rem;
   }
-
   .hero-subtext {
     font-size: 1.5rem;
     max-width: 70%;
     line-height: 2rem;
+  }
+  .hero-paragraph {
+    display: block;
   }
 }

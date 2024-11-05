@@ -61,15 +61,15 @@ function Footer() {
               className="footer_icon-link"
               src="/images/instagram.svg"
               alt=""
-              width="30"
-              height="30"
+              width={30}
+              height={30}
             />
             <Image
               className="footer_icon-link"
               src="/images/linkedIn.svg"
               alt=""
-              width="30"
-              height="30"
+              width={30}
+              height={30}
             />
           </div>
         </div>
