@@ -41,6 +41,11 @@
   min-width: 190px;
 }
 
+.footer h4 {
+  font-weight: normal;
+  color: #3f623d;
+}
+
 .footer_shortcut-li {
   display: flex;
   margin: 0.9rem 2rem 0 0;
