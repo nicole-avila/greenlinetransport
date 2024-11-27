@@ -10,8 +10,8 @@ function FairTransport({ data }) {
         <Image
           src={`https:${data.fairTransportImage.fields.file.url}`}
           alt="Fair Transport Image"
-          width={250}
-          height={300}
+          width={500}
+          height={800}
           className="image-style"
         />
       </div>

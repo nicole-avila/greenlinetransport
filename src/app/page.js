@@ -23,7 +23,12 @@ export default function Home() {
   return (
     <div>
       <Hero
-        heroImage={`https:${data.heroImage.fields.file.url}`}
+        heroImage={{
+          file: {
+            url: `https:${data.heroImage.fields.file.url}`,
+            contentType: data.heroImage.fields.file.contentType,
+          },
+        }}
         heroTitle={data.heroTitle}
         heroParagraph={data.heroParagraph}
       />
