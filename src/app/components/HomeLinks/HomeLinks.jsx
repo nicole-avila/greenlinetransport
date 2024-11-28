@@ -18,9 +18,9 @@ function HomeLinks({ showLinks, setShowLinks }) {
         <Link href="/#">
           <Image
             className="navbar_logo"
-            src="/images/whiteLogoXs.svg"
+            src="/images/Greenline.png"
             alt="Logo"
-            width={50}
+            width={100}
             height={50}
           />
         </Link>
