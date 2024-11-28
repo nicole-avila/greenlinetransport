@@ -25,14 +25,14 @@ export default function About() {
         imagePosition="left"
         title={data.title}
         text={data.omOssText}
-        imageUrl={`https://${data.omOssImage.fields.file.url}`}
+        imageUrl={`https:${data.omOssImage.fields.file.url}`}
         imageAlt={data.omOssImage.fields.file.fileName}
       />
       <AboutCard
         imagePosition="right"
         title={data.personnelTitle}
         text={data.personnelText}
-        imageUrl={`https://${data.personnelImage.fields.file.url}`}
+        imageUrl={`https:${data.personnelImage.fields.file.url}`}
         imageAlt={data.personnelImage.fields.file.fileName}
         buttonText="Kontakta Oss"
         buttonHref="/kontakt"
