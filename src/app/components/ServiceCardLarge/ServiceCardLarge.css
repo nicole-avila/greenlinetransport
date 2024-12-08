@@ -11,11 +11,6 @@
   margin: 0;
 }
 
-.service-img-box {
-  width: 30%;
-  min-width: 30%;
-}
-
 .service-text-content {
   max-width: 700px;
   margin-left: 3rem;
@@ -27,9 +22,12 @@
   line-height: 22px;
 }
 
-.service-image {
-  width: 100%;
-  height: auto;
+@media (min-width: 1440px) {
+  .service-img-box img {
+    object-fit: cover;
+    min-height: 556px;
+    width: 417px;
+  }
 }
 
 @media (max-width: 880px) {

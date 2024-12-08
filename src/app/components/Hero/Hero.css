@@ -19,9 +19,8 @@
 .hero__title {
   grid-area: 1 / 1 / 2 / 2;
   color: #fdfdfd;
-  /* text-shadow: -1px -1px 0 #202020bd, 1px -1px 0 #202020, -1px 1px 0 #202020,
-    1px 1px 0 #202020, -1px 0px 0 #202020, 1px 0px 0 #202020, 0px -1px 0 #202020,
-    0px 1px 0 #202020; */
+  text-shadow: -1px -1px 3px #20202080, 1px -1px 3px #20202080,
+    -1px 1px 3px #20202080, 1px 1px 3px #20202080;
   font-size: 1.5rem;
   padding: 10px;
   border-radius: 5px;
