@@ -64,13 +64,13 @@ function Footer() {
               width={30}
               height={30}
             />
-            <Image
+            {/* <Image
               className="footer_icon-link"
               src="/images/linkedIn.svg"
               alt=""
               width={30}
               height={30}
-            />
+            /> */}
           </div>
         </div>
         <div className="footer_svg-bg"></div>

@@ -4,9 +4,25 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import useContentful from "@/lib/contentful";
 
 function HomeLinks({ showLinks, setShowLinks }) {
   const pathname = usePathname();
+  const { data, loading, error } = useContentful("logga");
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error loading data: {error.message}</div>;
+  }
+
+  if (!data) {
+    return <div>No data found</div>;
+  }
+
+  console.log(data);
 
   const handleLinkClick = () => {
     setShowLinks(false);
@@ -17,11 +33,12 @@ function HomeLinks({ showLinks, setShowLinks }) {
       <div>
         <Link href="/#">
           <Image
-            className="navbar_logo"
-            src="/images/Greenline.png"
-            alt="Logo"
+            src={`https:${data.logo.fields.file.url}`}
+            alt="logo"
             width={100}
-            height={50}
+            height={60}
+            priority
+            className="navbar_logo"
           />
         </Link>
       </div>

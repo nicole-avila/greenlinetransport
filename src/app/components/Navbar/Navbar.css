@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.3rem 2rem;
+  padding: 0.5rem 2rem;
   font-size: 16px;
   font-weight: 400;
   letter-spacing: 1px;
@@ -13,6 +13,7 @@
 
 .navbar_logo {
   width: 100%;
+  background: #063304;
 }
 
 .navbar_hamburger {
@@ -54,7 +55,7 @@
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 62px;
+    top: 78px;
     right: 0;
     background-color: #3f623d;
     width: 100%;
@@ -70,11 +71,8 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 425px) {
   .navbar {
     padding: 0.5rem 1.5rem;
-  }
-  .navbar_logo {
-    width: 80%;
   }
 }
