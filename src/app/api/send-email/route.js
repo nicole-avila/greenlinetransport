@@ -29,8 +29,8 @@ export async function POST(req) {
       port: 587,
       secure: false,
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        user: process.env.AUTH_EMAIL_USER,
+        pass: process.env.AUTH_EMAIL_PASS,
       },
       tls: {
         rejectUnauthorized: false,
@@ -38,8 +38,8 @@ export async function POST(req) {
     });
 
     const mailOptions = {
-      from: 'info@greenlinetransport.se',
-      to: process.env.EMAIL_USER,
+      from: process.env.AUTH_EMAIL_USER,
+      to: process.env.EMAIL_TO,
       subject: `Kontaktförfrågan från ${name}`,
       text: `
         Name: ${name}
