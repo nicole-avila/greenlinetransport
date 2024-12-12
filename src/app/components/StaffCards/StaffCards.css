@@ -1,0 +1,18 @@
+.staff-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-around;
+}
+
+.staff img {
+  border-radius: 1%;
+}
+
+.staff-name {
+  font-weight: 700;
+  margin: 0.4rem 0 0.4rem 0;
+}
+
+.staff-title {
+}

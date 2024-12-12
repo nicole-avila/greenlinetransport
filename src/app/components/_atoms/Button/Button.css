@@ -5,6 +5,7 @@
   width: 228px;
   height: 52px;
   cursor: pointer;
+  text-transform: uppercase;
 }
 
 .button:disabled {
@@ -24,6 +25,7 @@
   font-size: 1rem;
   margin-top: 3rem;
   width: fit-content;
+  text-transform: uppercase;
 }
 
 .link-button:hover {
