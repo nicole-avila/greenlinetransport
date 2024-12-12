@@ -3,6 +3,7 @@ import "./om-oss.css";
 import useContentful from "@/lib/contentful";
 import AboutCard from "../components/AboutCard/AboutCard";
 import PartnerGallery from "../components/PartnerGallery/PartnerGallery";
+import StaffCard from "../components/StaffCards/StaffCards";
 
 export default function About() {
   const { data, loading, error } = useContentful("about");
@@ -18,7 +19,6 @@ export default function About() {
   if (!data) {
     return <div>No data found</div>;
   }
-
   return (
     <div className="about-wrapper margins">
       <AboutCard
@@ -39,6 +39,7 @@ export default function About() {
       />
       <h2 className="about-partners">Samarbetspartners</h2>
       <PartnerGallery partners={data.partners} />
+      <StaffCard staff={data.staff}/>
     </div>
   );
 }
