@@ -6,6 +6,7 @@ import ServiceCardLarge from '../components/ServiceCardLarge/ServiceCardLarge';
 
 function Services() {
   const { data, loading, error } = useContentful('service');
+  
 
   if (loading) {
     return <div>Loading...</div>;
@@ -33,6 +34,7 @@ function Services() {
           title={data.thermoDistribution.fields.title}
           id='thermo-distribution'
           longText={data.thermoDistribution.fields.longText}
+          blurDataURL={`https:${data.thermoDistribution.fields.image.fields.file.url}`}
         />
         <ServiceCardLarge
           imageUrl={`https:${data.budservice.fields.image.fields.file.url}`}
@@ -40,6 +42,7 @@ function Services() {
           title={data.budservice.fields.title}
           id='budservice'
           longText={data.budservice.fields.longText}
+          blurDataURL={`https:${data.budservice.fields.image.fields.file.url}`}
         />
         <ServiceCardLarge
           imageUrl={`https:${data.styckegodsOmlastning.fields.image.fields.file.url}`}
@@ -47,6 +50,7 @@ function Services() {
           title={data.styckegodsOmlastning.fields.title}
           id='styckegods-omlastning'
           longText={data.styckegodsOmlastning.fields.longText}
+          blurDataURL={`https:${data.styckegodsOmlastning.fields.image.fields.file.url}`}
         />
       </div>
     </div>
