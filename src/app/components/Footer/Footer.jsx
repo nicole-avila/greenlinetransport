@@ -19,6 +19,8 @@ function Footer() {
     return <div>No data found</div>;
   }
 
+  console.log(data);
+
   return (
     <div className="footer">
       <div className="footer_content">
@@ -50,20 +52,24 @@ function Footer() {
             <h4>kontakt</h4>
             <p>{data.phoneNumber}</p>
             <p>{data.mobileNumber}</p>
-            <p className="footer-email">{data.email}</p>
+            <Link className="footer-email" href={`mailto:${data.email}`}>
+              {data.email}
+            </Link>
           </div>
         </div>
 
         <div className="footer_media">
           <h4>sociala medier</h4>
           <div className="footer_icon">
-            <Image
-              className="footer_icon-link"
-              src="/images/instagram.svg"
-              alt=""
-              width={30}
-              height={30}
-            />
+            <Link href={data.instagram} target="_blank">
+              <Image
+                className="footer_icon-link"
+                src="/images/instagram.svg"
+                alt=""
+                width={30}
+                height={30}
+              />
+            </Link>
             {/* <Image
               className="footer_icon-link"
               src="/images/linkedIn.svg"
@@ -73,7 +79,15 @@ function Footer() {
             /> */}
           </div>
         </div>
-        <div className="footer_svg-bg"></div>
+      </div>
+      <div className="footer_svg-bg">
+        <Image
+          src="/images/Greenline.png"
+          alt=""
+          width={150}
+          height={100}
+          layout="responsive"
+        />
       </div>
     </div>
   );

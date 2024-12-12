@@ -22,7 +22,6 @@ function HomeLinks({ showLinks, setShowLinks }) {
     return <div>No data found</div>;
   }
 
-
   const handleLinkClick = () => {
     setShowLinks(false);
   };
@@ -34,8 +33,8 @@ function HomeLinks({ showLinks, setShowLinks }) {
           <Image
             src={`https:${data.logo.fields.file.url}`}
             alt="logo"
-            width={100}
-            height={60}
+            width={105}
+            height={90}
             priority
             className="navbar_logo"
           />
