@@ -33,7 +33,7 @@ function HomeLinks({ showLinks, setShowLinks }) {
           <Image
             src={`https:${data.logo.fields.file.url}`}
             alt="logo"
-            width={105}
+            width={150}
             height={90}
             priority
             className="navbar_logo"
