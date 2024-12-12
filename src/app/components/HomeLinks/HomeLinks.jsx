@@ -22,7 +22,6 @@ function HomeLinks({ showLinks, setShowLinks }) {
     return <div>No data found</div>;
   }
 
-  console.log(data);
 
   const handleLinkClick = () => {
     setShowLinks(false);
